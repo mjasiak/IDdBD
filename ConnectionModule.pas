@@ -12,6 +12,7 @@ type
     DataSource: TDataSource;
     ADODataSet: TADODataSet;
     procedure Select(Query:string);
+    procedure InsertUpdate(Query:string);
     function Count():Integer;
     function ColumnSelect(zapytanie:string;column:string):string;
     function SingleRecordParamByName(parameter: String):String;
@@ -59,8 +60,17 @@ begin
   Result:= ADOQuery.FieldByName(parameter).AsString;
 end;
 
+procedure TDataConnection.InsertUpdate(Query:string);
+begin
+    ADOQuery.Close;
+    ADOQuery.SQL.Clear;
+    ADOQuery.SQL.Add(Query);
+    ADOQuery.ExecSQL;
+end;
+
 function TDataConnection.IsWorker():Boolean;
 begin
+
   Result:= ADOQuery.FieldByName('user_isworker').AsBoolean;
 end;
 

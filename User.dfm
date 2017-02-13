@@ -13,11 +13,24 @@ object UserForm: TUserForm
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object DBGrid1: TDBGrid
     Left = 8
     Top = 8
-    Width = 22
-    Height = 13
-    Caption = 'User'
+    Width = 545
+    Height = 252
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object btn_discount: TButton
+    Left = 8
+    Top = 266
+    Width = 75
+    Height = 25
+    Caption = 'Moje zni'#380'ki'
+    TabOrder = 1
   end
 end

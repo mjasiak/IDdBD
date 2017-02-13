@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ConnectionModule, User, Worker;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ConnectionModule, Registration, Worker, User;
 
 type
   TLoginForm = class(TForm)
@@ -19,6 +19,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btn_loginClick(Sender: TObject);
+    procedure lbl_registerClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,15 +38,15 @@ begin
      DataConnection.Select('SELECT * FROM Users WHERE user_login= ''' + Edit1.Text + ''' AND user_haslo= ''' + Edit2.Text + ''';');
      if DataConnection.Count = 1 then
      begin
-     if DataConnection.IsWorker then
-     begin
-       WorkerForm.Show;
-       WorkerForm.User_id := Integer(DataConnection.SingleRecordParamByName('user_id'));
-     end
-     else begin
-       UserForm.Show;
-       UserForm.User_id := Integer(DataConnection.SingleRecordParamByName('user_id'));
-     end;
+          if DataConnection.IsWorker then
+          begin
+               WorkerForm.Show;
+               WorkerForm.UserId := Integer(DataConnection.SingleRecordParamByName('user_id'));
+          end else
+          begin
+               UserForm.Show;
+               UserForm.UserId := Integer(DataConnection.SingleRecordParamByName('user_id'));
+          end;
      end else ShowMessage('Z³y login lub has³o');
 end;
 
@@ -57,6 +58,11 @@ end;
 procedure TLoginForm.FormDestroy(Sender: TObject);
 begin
      DataConnection.ADOConnection.Connected  := false;
+end;
+
+procedure TLoginForm.lbl_registerClick(Sender: TObject);
+begin
+     Register.Show;
 end;
 
 procedure TLoginForm.lbl_registerMouseEnter(Sender: TObject);

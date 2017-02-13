@@ -36,9 +36,11 @@ object LoginForm: TLoginForm
     Top = 143
     Width = 53
     Height = 13
+    Cursor = crHandPoint
     Caption = 'Zarejestruj'
     Color = clBtnFace
     ParentColor = False
+    OnClick = lbl_registerClick
     OnMouseEnter = lbl_registerMouseEnter
     OnMouseLeave = lbl_registerMouseLeave
   end
