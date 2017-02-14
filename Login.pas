@@ -38,14 +38,13 @@ begin
      DataConnection.Select('SELECT * FROM Users WHERE user_login= ''' + Edit1.Text + ''' AND user_haslo= ''' + Edit2.Text + ''';');
      if DataConnection.Count = 1 then
      begin
-          if DataConnection.IsWorker then
+          if DataConnection.IsBoolean('user_isworker') then
           begin
                WorkerForm.Show;
-               WorkerForm.UserId := Integer(DataConnection.SingleRecordParamByName('user_id'));
+               //LoginForm.Close;
           end else
           begin
                UserForm.Show;
-               UserForm.UserId := Integer(DataConnection.SingleRecordParamByName('user_id'));
           end;
      end else ShowMessage('Z³y login lub has³o');
 end;
@@ -53,6 +52,8 @@ end;
 procedure TLoginForm.FormCreate(Sender: TObject);
 begin
      DataConnection.ADOConnection.Connected  := true;
+      Left:=(Screen.Width-Width)  div 2;
+      Top:=(Screen.Height-Height) div 2;
 end;
 
 procedure TLoginForm.FormDestroy(Sender: TObject);
@@ -62,7 +63,7 @@ end;
 
 procedure TLoginForm.lbl_registerClick(Sender: TObject);
 begin
-     Register.Show;
+     Register.ShowModal;
 end;
 
 procedure TLoginForm.lbl_registerMouseEnter(Sender: TObject);

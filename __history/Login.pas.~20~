@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ConnectionModule;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, ConnectionModule, Registration, Worker, User;
 
 type
   TLoginForm = class(TForm)
@@ -19,6 +19,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btn_loginClick(Sender: TObject);
+    procedure lbl_registerClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,18 +36,36 @@ implementation
 procedure TLoginForm.btn_loginClick(Sender: TObject);
 begin
      DataConnection.Select('SELECT * FROM Users WHERE user_login= ''' + Edit1.Text + ''' AND user_haslo= ''' + Edit2.Text + ''';');
-     if DataConnection.Count = 1 then ShowMessage('Witaj ' + DataConnection.SingleRecordParamByName('user_name') + '!')
-     else ShowMessage('Z造 login lub has這');
+     if DataConnection.Count = 1 then
+     begin
+          if DataConnection.IsBoolean('user_isworker') then
+          begin
+               WorkerForm.UserId := DataConnection.IsIntegr('user_id');
+               WorkerForm.Show;
+               //LoginForm.Close;
+          end else
+          begin
+               UserForm.UserId := DataConnection.IsInteger('user_id');
+               UserForm.Show;
+          end;
+     end else ShowMessage('Z造 login lub has這');
 end;
 
 procedure TLoginForm.FormCreate(Sender: TObject);
 begin
      DataConnection.ADOConnection.Connected  := true;
+      Left:=(Screen.Width-Width)  div 2;
+      Top:=(Screen.Height-Height) div 2;
 end;
 
 procedure TLoginForm.FormDestroy(Sender: TObject);
 begin
      DataConnection.ADOConnection.Connected  := false;
+end;
+
+procedure TLoginForm.lbl_registerClick(Sender: TObject);
+begin
+     Register.ShowModal;
 end;
 
 procedure TLoginForm.lbl_registerMouseEnter(Sender: TObject);

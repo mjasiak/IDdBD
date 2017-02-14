@@ -6,6 +6,7 @@ object DataConnection: TDataConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;Initial Catalog=Lach;Data Source=JASIEECKI\SQLEXPRESS'
+    LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 352
     Top = 208

@@ -6,7 +6,8 @@ uses
   ConnectionModule in 'ConnectionModule.pas' {DataConnection: TDataModule},
   User in 'User.pas' {UserForm},
   Worker in 'Worker.pas' {WorkerForm},
-  Registration in 'Registration.pas' {Register};
+  Registration in 'Registration.pas' {Register},
+  ClientCard in 'ClientCard.pas' {Card};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TUserForm, UserForm);
   Application.CreateForm(TWorkerForm, WorkerForm);
   Application.CreateForm(TRegister, Register);
+  Application.CreateForm(TCard, Card);
   Application.Run;
 end.

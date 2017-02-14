@@ -15,8 +15,9 @@ type
     procedure InsertUpdate(Query:string);
     function Count():Integer;
     function ColumnSelect(zapytanie:string;column:string):string;
-    function SingleRecordParamByName(parameter: String):String;
-    function IsWorker():Boolean;
+    function IsString(parameter: String):String;
+    function IsBoolean(parameter: String):Boolean;
+    function IsInteger(parameter: String):Integer;
   private
     { Private declarations }
   public
@@ -54,7 +55,7 @@ begin
      Result := DataSource.DataSet.RecordCount;
 end;
 
-function TDataConnection.SingleRecordParamByName(parameter: String):String;
+function TDataConnection.IsString(parameter: String):String;
 begin
 
   Result:= ADOQuery.FieldByName(parameter).AsString;
@@ -68,10 +69,15 @@ begin
     ADOQuery.ExecSQL;
 end;
 
-function TDataConnection.IsWorker():Boolean;
+function TDataConnection.IsBoolean(parameter: String):Boolean;
 begin
 
-  Result:= ADOQuery.FieldByName('user_isworker').AsBoolean;
+  Result:= ADOQuery.FieldByName(parameter).AsBoolean;
+end;
+
+function TDataConnection.IsInteger(parameter: String):Integer;
+begin
+  Result:= ADoQuery.FieldByName(parameter).AsInteger;
 end;
 
 end.

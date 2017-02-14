@@ -11,6 +11,7 @@ object WorkerForm: TWorkerForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object dbGrid: TDBGrid
@@ -48,6 +49,7 @@ object WorkerForm: TWorkerForm
     Height = 25
     Caption = 'Moja karta'
     TabOrder = 3
+    OnClick = btn_mycardClick
   end
   object btn_discount: TButton
     Left = 462
