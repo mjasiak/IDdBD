@@ -35,7 +35,7 @@ begin
      begin
           //£adowanie danych
           CardNumber := DataConnection.IsInteger('card_id');
-          DataConnection.Select('SELECT * FROM ShoppingHistory WHERE card_id = '''+IntToStr(CardNumber)+''';');
+          DataConnection.Select('SELECT shopping_id as ''Numer transakcji'', ROUND(shopping_values,2,1) as ''Wartoœæ zakupów'', shopping_points as ''Przyznane punkty'', shopping_date as ''Data zakupów'' FROM ShoppingHistory WHERE card_id = '''+IntToStr(CardNumber)+''';');
           DBGrid1.DataSource := DataConnection.DataSource;
      end else
      begin
