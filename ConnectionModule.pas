@@ -13,6 +13,7 @@ type
     ADODataSet: TADODataSet;
     procedure Select(Query:string);
     procedure InsertUpdate(Query:string);
+    procedure Delete(zapytanie:string);
     function Count():Integer;
     function ColumnSelect(zapytanie:string;column:string):string;
     function IsString(parameter: String):String;
@@ -39,6 +40,16 @@ begin
     ADOQuery.SQL.Clear;
     ADOQuery.SQL.Add(Query);
     ADOQuery.Open;
+end;
+
+procedure TDataConnection.Delete(zapytanie:string);
+begin
+    ADOQuery.Close;
+    ADOQuery.SQL.Clear;
+    ADOQuery.SQL.Add(zapytanie);
+    ADOQuery.ExecSQL;
+    ADOConnection.Connected:=False;
+    ADOConnection.Connected:=True;
 end;
 
 function TDataConnection.ColumnSelect(zapytanie:string;column:string):string;

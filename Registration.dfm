@@ -46,6 +46,7 @@ object Register: TRegister
       Top = 80
       Width = 121
       Height = 21
+      PasswordChar = '*'
       TabOrder = 1
     end
   end

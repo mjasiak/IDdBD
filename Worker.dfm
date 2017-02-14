@@ -11,6 +11,7 @@ object WorkerForm: TWorkerForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -25,6 +26,7 @@ object WorkerForm: TWorkerForm
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbGridCellClick
   end
   object btn_edit: TButton
     Left = 8
@@ -32,7 +34,9 @@ object WorkerForm: TWorkerForm
     Width = 75
     Height = 25
     Caption = 'Edytuj'
+    Enabled = False
     TabOrder = 1
+    OnClick = btn_editClick
   end
   object btn_delete: TButton
     Left = 89
@@ -40,7 +44,9 @@ object WorkerForm: TWorkerForm
     Width = 75
     Height = 25
     Caption = 'Usu'#324
+    Enabled = False
     TabOrder = 2
+    OnClick = btn_deleteClick
   end
   object btn_mycard: TButton
     Left = 552
