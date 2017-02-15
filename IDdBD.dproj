@@ -108,17 +108,11 @@
             <Form>Card</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="e:\embarcadero\embarcadero\studio\15.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS">
-            <Form>OKBottomDlg</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="DeleteDialog.pas">
             <Form>DeleteForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="EditDialog.pas">
             <Form>EditForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -142,15 +136,15 @@
                 </Source>
             </Delphi.Personality>
             <Deployment>
-                <DeployFile LocalName="e:\embarcadero\embarcadero\studio\15.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\IDdBD.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>IDdBD.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="e:\embarcadero\embarcadero\studio\15.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

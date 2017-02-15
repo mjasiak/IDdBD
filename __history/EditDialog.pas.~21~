@@ -25,7 +25,6 @@ type
     procedure ShowForm(Id: Integer);
     procedure btn_cancelClick(Sender: TObject);
     procedure btn_saveClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   private
     { Private declarations }
@@ -48,19 +47,9 @@ begin
 end;
 
 procedure TEditForm.btn_saveClick(Sender: TObject);
-var
-    helper: String;
 begin
-if cbox_isworker.Checked then helper:= 'true'
-else helper:= 'false';
-     DataConnection.InsertUpdate('UPDATE Users SET user_name='''+tbox_name.Text +''', user_lastname='''+tbox_lastname.Text+''', user_isworker='''+helper+''' WHERE user_id='''+IntToStr(UserId)+''';');
+     DataConnection.InsertUpdate('UPDATE Users SET user_name='''+tbox_name+''', user_lastname='''+tbox_lastname+''', user_isworker='''+cbox_isworker.Checked+''' WHERE user_id='''+IntToStr(UserId)+''';');
      ShowMessage('Edytowano!');
-     btn_cancel.Click;
-end;
-
-procedure TEditForm.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-     btn_cancel.Click;
 end;
 
 procedure TEditForm.ShowForm(Id: Integer);
