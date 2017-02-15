@@ -57,4 +57,12 @@ object WorkerForm: TWorkerForm
     TabOrder = 3
     OnClick = btn_mycardClick
   end
+  object btn_discount: TButton
+    Left = 462
+    Top = 266
+    Width = 75
+    Height = 25
+    Caption = 'Nadaj znizk'#281
+    TabOrder = 4
+  end
 end

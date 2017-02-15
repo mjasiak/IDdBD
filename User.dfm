@@ -26,12 +26,4 @@ object UserForm: TUserForm
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
-  object btn_discount: TButton
-    Left = 8
-    Top = 266
-    Width = 75
-    Height = 25
-    Caption = 'Moje zni'#380'ki'
-    TabOrder = 1
-  end
 end

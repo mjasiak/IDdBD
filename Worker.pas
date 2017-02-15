@@ -12,7 +12,6 @@ type
     btn_edit: TButton;
     btn_delete: TButton;
     btn_mycard: TButton;
-    btn_discount: TButton;
     procedure FormShow(Sender: TObject);
     procedure btn_mycardClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

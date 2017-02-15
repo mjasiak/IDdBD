@@ -9,7 +9,6 @@ uses
 type
   TUserForm = class(TForm)
     DBGrid1: TDBGrid;
-    btn_discount: TButton;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
