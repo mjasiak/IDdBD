@@ -26,6 +26,7 @@ type
     procedure btn_cancelClick(Sender: TObject);
     procedure btn_saveClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_deletecardClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -45,6 +46,13 @@ procedure TEditForm.btn_cancelClick(Sender: TObject);
 begin
      DataConnection.Select('SELECT user_id as ''Numer u¿ytkownika'', user_login as ''Login'', user_name as ''Imiê'', user_lastname as ''Nazwisko'', card_id as ''Numer karty'' FROM Users WHERE card_id != '''';');
      EditForm.Close;
+end;
+
+procedure TEditForm.btn_deletecardClick(Sender: TObject);
+begin
+     DataConnection.InsertUpdate('UPDATE Users SET card_id=CAST(NULL AS INTEGER) WHERE user_id='''+IntToStr(UserId)+''';');
+     ShowMessage('Usuniêto kartê!');
+     btn_cancel.Click;
 end;
 
 procedure TEditForm.btn_saveClick(Sender: TObject);

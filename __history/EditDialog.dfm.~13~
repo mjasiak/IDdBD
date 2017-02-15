@@ -92,7 +92,6 @@ object EditForm: TEditForm
       Width = 75
       Height = 25
       Caption = 'Resetuj'
-      Enabled = False
       TabOrder = 1
     end
     object btn_deletecard: TButton

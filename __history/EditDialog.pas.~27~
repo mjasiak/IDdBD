@@ -24,6 +24,10 @@ type
     btn_cancel: TButton;
     procedure ShowForm(Id: Integer);
     procedure btn_cancelClick(Sender: TObject);
+    procedure btn_saveClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_deletecardClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -44,6 +48,29 @@ begin
      EditForm.Close;
 end;
 
+procedure TEditForm.btn_deletecardClick(Sender: TObject);
+begin
+     DataConnection.InsertUpdate('UPDATE Users SET card_id=''NULL'' WHERE user_id='''+IntToStr(UserId)+''';');
+     ShowMessage('Usuniêto kartê!');
+     btn_cancel.Click;
+end;
+
+procedure TEditForm.btn_saveClick(Sender: TObject);
+var
+    helper: String;
+begin
+if cbox_isworker.Checked then helper:= 'true'
+else helper:= 'false';
+     DataConnection.InsertUpdate('UPDATE Users SET user_name='''+tbox_name.Text +''', user_lastname='''+tbox_lastname.Text+''', user_isworker='''+helper+''' WHERE user_id='''+IntToStr(UserId)+''';');
+     ShowMessage('Edytowano!');
+     btn_cancel.Click;
+end;
+
+procedure TEditForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+     btn_cancel.Click;
+end;
+
 procedure TEditForm.ShowForm(Id: Integer);
 begin
      //
@@ -51,7 +78,8 @@ begin
      DataConnection.Select('SELECT user_id as ''Numer u¿ytkownika'', user_login as ''Login'', user_name as ''Imie'', user_lastname as ''Nazwisko'', card_id as ''Numer karty'', user_isworker FROM Users WHERE user_id = '''+IntToStr(UserId)+''';');
      tbox_name.Text := DataConnection.IsString('Imie');
      tbox_lastname.Text := DataConnection.IsString('Nazwisko');
-     if DataConnection.IsBoolean('use') then
+     if DataConnection.IsBoolean('user_isworker') then cbox_isworker.Checked := true
+     else cbox_isworker.Checked := false;
 
      EditForm.ShowModal;
 end;
